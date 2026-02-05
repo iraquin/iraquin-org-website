@@ -1,12 +1,39 @@
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0b1020;
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(11, 16, 32, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.brand {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
   color: #e6e8ee;
 }
 
+.nav-right a {
+  margin-left: 24px;
+  color: #b8c0ff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav-right a:hover {
+  color: #ffffff;
+}
+
+/* MAIN CONTENT */
 .container {
   min-height: 100vh;
+  padding-top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,28 +47,29 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin: 0;
 }
 
 .tagline {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 1.2rem;
   color: #b8c0ff;
 }
 
-.links {
-  margin-top: 32px;
-  display: flex;
-  gap: 24px;
+.cta {
+  margin-top: 36px;
 }
 
-.links a {
+.cta .primary {
+  padding: 12px 20px;
+  border: 1px solid #b8c0ff;
   color: #ffffff;
   text-decoration: none;
-  border-bottom: 1px solid #555;
+  font-size: 0.9rem;
 }
 
-.links a:hover {
-  border-color: #fff;
+.cta .primary:hover {
+  background: #b8c0ff;
+  color: #0b1020;
 }
