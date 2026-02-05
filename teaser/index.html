@@ -1,0 +1,715 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Iraquin</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2e5a7bd4-6127-8037-8cb6-e320c3015ec2" class="page sans"><header><img class="page-cover-image" src="assets/image.jpg" style="object-position:center 50%"/><h1 class="page-title" dir="auto"><mark class="highlight-blue"><strong>Iraquin</strong></mark></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h3 id="2e5a7bd4-6127-802a-a77b-dd7f2f812bc9" class=""><mark class="highlight-blue">A High Performance Layer-1 for Decentralized Compute &amp; Verifiable AI Governance</mark></h3></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-8083-8ee0-d14e9d2d4c5b"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-805b-8896-db3044b3e13e" class=""><mark class="highlight-blue"><strong>What is Iraquin?</strong></mark></h2></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-80e4-9579-cb9d4ba2e5fb" class=""><strong>Iraquin</strong> is a Layer-1 blockchain designed for <strong>high throughput decentralized compute and AI inference</strong>, without relying on on chain smart contract execution or total transaction ordering.</p></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8042-8c0d-e29927867045" class="">The core idea is simple:</p></div><div style="display:contents" dir="auto"><blockquote id="2e5a7bd4-6127-80b3-88b2-c02781545481" class="">Instead of re executing everything on chain, Iraquin commits cryptographically verified state transitions produced off chain.</blockquote></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-80a9-bcfc-cfa041152290" class="">This enables horizontal scalability, eliminates duplicated work, and avoids reorgs while preserving correctness through verification, economic accountability, and dispute resolution.</p></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-802b-b343-c3920bc3ee59"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-8013-afbc-cd34f13dc07e" class=""><mark class="highlight-blue"><strong>Core Architecture</strong></mark></h2></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8008-ad92-ef4f393d96f9" class="">Iraquin is built around two coupled protocols:</p></div><div style="display:contents" dir="auto"><h3 id="2e5a7bd4-6127-80d6-bfff-c71a16e31e95" class=""><mark class="highlight-blue"><strong>Prime — High Performance Block Production</strong></mark></h3></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8023-a7e5-f1ae61b58b81" class="bulleted-list"><li style="list-style-type:disc">Separates work between <strong>miners</strong> and <strong>colliders</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-807a-81b1-c93793fc514a" class="bulleted-list"><li style="list-style-type:disc">Miners handle cryptographic verification</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8037-af74-cd7e0543cdef" class="bulleted-list"><li style="list-style-type:disc">Colliders handle state execution</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8000-b94e-e8c664abfa87" class="bulleted-list"><li style="list-style-type:disc">Eliminates duplicated computation</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8054-8ea8-cd41c7a53c5c" class="bulleted-list"><li style="list-style-type:disc">Supports <strong>parallel block production</strong> over disjoint account sets</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-802e-9bb5-c6d3b12fd64c" class="bulleted-list"><li style="list-style-type:disc">Blocks are optimistically accepted for immediate throughput</li></ul></div><div style="display:contents" dir="auto"><h3 id="2e5a7bd4-6127-80db-8677-c406a770b47d" class=""><mark class="highlight-blue"><strong>Omega — Verification, Disputes &amp; Finality</strong></mark></h3></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80f4-bb03-d35de317e472" class="bulleted-list"><li style="list-style-type:disc">Validator quorum verifies Prime blocks asynchronously</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8076-9a7c-cf5b60df1a92" class="bulleted-list"><li style="list-style-type:disc">Detects invalid state updates or behavior</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8047-8056-eae43115302f" class="bulleted-list"><li style="list-style-type:disc">Applies <strong>forward correction</strong> (no rollbacks, no reorgs)</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8035-bd3d-e26eb9681f0d" class="bulleted-list"><li style="list-style-type:disc">Provides epoch bounded dispute windows</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80b0-8839-c506579f6cb1" class="bulleted-list"><li style="list-style-type:disc">Finalizes state once disputes close</li></ul></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-80b6-82a6-e91328cf9447"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-806a-8462-ce0c6e9b5b39" class=""><mark class="highlight-blue"><strong>Execution Model (No VM)</strong></mark></h2></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80de-8fb3-f4630cd069e5" class="bulleted-list"><li style="list-style-type:disc">No on-chain smart contract VM</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8043-91ff-c30141881847" class="bulleted-list"><li style="list-style-type:disc">Contracts execute <strong>off-chain inside TEEs</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8036-8913-ea0dc63c53ec" class="bulleted-list"><li style="list-style-type:disc">Written in <strong>any language</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8024-82c0-cfe4979c2e04" class="bulleted-list"><li style="list-style-type:disc">Execution produces:<div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8017-8dc2-c0b6bbe41611" class="bulleted-list"><li style="list-style-type:circle">State diff</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80ed-bac0-df293f6d74ec" class="bulleted-list"><li style="list-style-type:circle">Read/write account set</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8020-82b1-e19aa6d0586a" class="bulleted-list"><li style="list-style-type:circle">Cryptographic attestation</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80d8-b440-e40ded1345e7" class="bulleted-list"><li style="list-style-type:disc">The chain verifies and commits the state update</li></ul></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8057-993a-ffdda147250d" class="">This model avoids VM bottlenecks and is natively compatible with AI workloads.</p></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-80a9-811e-e5a4b0b56d36"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-80c7-a314-fd4d9fbe6573" class=""><mark class="highlight-blue"><strong>Native Compute &amp; AI Marketplace</strong></mark></h2></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80c1-823b-ec1bc0bcebf0" class="bulleted-list"><li style="list-style-type:disc">Built in marketplace for compute and AI inference</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8027-8e5a-ff26843c0b9a" class="bulleted-list"><li style="list-style-type:disc">Jobs are submitted via a <strong>consensus backed Data Availability (DA) layer</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80d6-aec6-f3693922c109" class="bulleted-list"><li style="list-style-type:disc">Workers bid, stake collateral, and commit to delivery deadlines</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8002-a7ca-f2f1136ff855" class="bulleted-list"><li style="list-style-type:disc">Results are verified and settled on chain</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8028-aaae-ce4cd696c064" class="bulleted-list"><li style="list-style-type:disc">Failed or invalid jobs are slashed and re auctioned</li></ul></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-80d6-94e6-fdd45cef55e1"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-8069-a95c-e3146d293351" class=""><mark class="highlight-blue"><strong>Verifiable AI Governance (OPML)</strong></mark></h2></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80bd-bd2b-df0d3a5ddb75" class="bulleted-list"><li style="list-style-type:disc">AI models propose <strong>consensus-level decisions</strong>, including:<div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-800c-8759-f44fe9955fde" class="bulleted-list"><li style="list-style-type:circle">Fees</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8067-9a0a-f7d8cff58ae1" class="bulleted-list"><li style="list-style-type:circle">Throughput tuning</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-804e-9b5c-cb885e03d4c8" class="bulleted-list"><li style="list-style-type:circle">Burn and stake parameters</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8047-88ef-fb5162fee43f" class="bulleted-list"><li style="list-style-type:circle">Network configuration</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8074-957f-f1d73550e914" class="bulleted-list"><li style="list-style-type:disc">Decisions are:<div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-808e-93c1-ce0297cd3bf4" class="bulleted-list"><li style="list-style-type:circle">Cryptographically verifiable (OPML)</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80b1-bb56-dab230d07a40" class="bulleted-list"><li style="list-style-type:circle">Challengeable</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8078-a599-c71f53274fa5" class="bulleted-list"><li style="list-style-type:circle">Enforced by consensus</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8096-b089-ddf154a38c18" class="bulleted-list"><li style="list-style-type:disc">AI acts as a <strong>provable decision proposer</strong>, not a trusted authority</li></ul></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-8015-902e-d16a6787fa31"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-805a-9e81-fddfe248290a" class=""><mark class="highlight-blue"><strong>Why This Matters</strong></mark></h2></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80c7-9f14-e9f561283be7" class="bulleted-list"><li style="list-style-type:disc">No reorgs or rollbacks</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80ce-9969-c2ab154b70dc" class="bulleted-list"><li style="list-style-type:disc">No duplicated execution</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-804f-b93b-f9c66f24225e" class="bulleted-list"><li style="list-style-type:disc">Parallel throughput without sharding</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-802b-846b-cbd8213fbd93" class="bulleted-list"><li style="list-style-type:disc">AI native by design</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-80d4-a66c-c1cb9dac9b32" class="bulleted-list"><li style="list-style-type:disc">Suitable for DePIN, compute networks, and inference heavy protocols</li></ul></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8063-92f0-f2935e8a7214" class="">Iraquin is not a &quot;better VM chain.&quot;</p></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8026-aebb-c8ba698f7e61" class="">It&#x27;s a <strong>different execution and governance model for AI native decentralized infrastructure</strong>.</p></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-809e-b6b3-ccb8f67a706b"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-8097-a050-c52008db5855" class=""><mark class="highlight-blue"><strong>Current Status</strong></mark></h2></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8077-95b1-fcb3e1dd1859" class="bulleted-list"><li style="list-style-type:disc">Working Prime protocol demo</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-8068-8df3-e770a9322f1a" class="bulleted-list"><li style="list-style-type:disc">Working OPML (verifiable AI) demo</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-809d-b502-f5e4fde441bb" class="bulleted-list"><li style="list-style-type:disc">Protocol design finalized</li></ul></div><div style="display:contents" dir="auto"><ul id="2e5a7bd4-6127-809b-97cc-df6807900dc0" class="bulleted-list"><li style="list-style-type:disc">Pre-seed stage</li></ul></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-80d7-95b5-cacb3639f921" class=""><strong>Looking for:</strong> early partners, core team members, and pre seed funding.</p></div><div style="display:contents" dir="auto"><hr id="2e5a7bd4-6127-8077-9c0d-cf4b2f0cc869"/></div><div style="display:contents" dir="auto"><h2 id="2e5a7bd4-6127-80ac-9f28-dd2d032ec7e8" class=""><mark class="highlight-blue"><strong>Contact</strong></mark></h2></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8041-8d70-e68e07c0cd32" class="">Hari Hara Prasad Shivakumar</p></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-80fa-a5ef-f593796833f5" class="">Founder, Iraquin</p></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8061-b164-d6a0d3832c62" class="">📧 <a href="mailto:hari@iraquin.com">hari@iraquin.com</a></p></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-80a7-af38-ce1bea366c57" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2e5a7bd4-6127-8039-9501-c09b98201c97" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

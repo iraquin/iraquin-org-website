@@ -1,40 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Iraquin</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="An architecture for deterministic outcomes in high-performance blockchains." />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iraquin Protocol | High-Performance Blockchain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Changed to absolute black */
+            --bg-color: black; 
+            --accent-blue: #b8c0ff;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --nav-glass: rgba(20, 20, 20, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            /* Removed the blue radial gradient for a pure black look */
+            background: var(--bg-color);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 32px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand { font-weight: 600; letter-spacing: 0.1em; font-size: 1.1rem; }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        .nav-cta {
+            border: 1px solid var(--accent-blue);
+            padding: 6px 18px;
+            border-radius: 20px;
+            color: var(--accent-blue) !important;
+        }
+
+        /* --- HERO & PARTICLES --- */
+        .hero-section {
+          background: (circle at center, #161f3d 0%, #000000 70%);
+            position: relative;
+            width: 100%;
+            height: 65vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-logo {
+            max-height: 350px;
+            width: auto;
+            /* Softened shadow for black background */
+            filter: drop-shadow(0 0 30px rgba(184, 192, 255, 0.15));
+            z-index: 15;
+            border-radius: 50%;
+        }
+
+        .glowing-ring-overlay {
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            border: 1px solid rgba(184, 192, 255, 0.2);
+            box-shadow: 0 0 40px rgba(184, 192, 255, 0.05), 
+                        inset 0 0 20px rgba(184, 192, 255, 0.05);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* --- CONTENT SECTION --- */
+        .content-area {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+
+        .tagline span { color: var(--accent-blue); }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 36px;
+            background: #ffffff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: var(--accent-blue);
+            box-shadow: 0 10px 25px rgba(184, 192, 255, 0.3);
+        }
+    </style>
 </head>
 <body>
 
-<header class="navbar">
-  <div class="nav-left">
-    <span class="brand">iraquin</span>
-  </div>
-  <nav class="nav-right">
-    <a href="/">Teaser</a>
-    <a href="docs/iraquin-whitepaper.pdf" target="_blank">Whitepaper</a>
-    <a href="docs/iraquin-pitch.pdf" target="_blank">Pitch Deck</a>
-  </nav>
-</header>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">iraquin</div>
+            <nav class="nav-links">
+                <a href="/teaser/">Teaser</a>
+                <a href="https://github.com/iraquin/iraquin-protocol/blob/master/iraquin_whitepaper.pdf">Whitepaper</a>
+                <a href="https://drive.google.com/file/d/1NVOZWJLADt_82a6vaAY82huTPiRnhirV/view?usp=sharing">Pitch Deck</a>
+                <a href="#" class="nav-cta">Docs</a>
+            </nav>
+        </div>
+    </header>
 
-<main class="container">
-  <img src="assets/hero.png" alt="Iraquin logo" class="hero" />
+    <main>
+        <section class="hero-section">
+            <canvas id="particleCanvas"></canvas>
+            <div class="logo-container">
+                <div class="glowing-ring-overlay"></div>
+                <img src="assets/hero2.jpg" alt="Iraquin Logo" class="main-logo">
+            </div>
+        </section>
 
-  <h1>Iraquin</h1>
-  <p class="tagline">
-    An architecture for deterministic outcomes<br />
-    in high-performance blockchains.
-  </p>
+        <section class="content-area">
+            <h1>Iraquin Protocol</h1>
+            <p class="tagline">
+                An architecture for <span>deterministic outcomes</span><br>
+                in high-performance blockchains.
+            </p>
+            <a href="#" class="btn-primary">Read the Whitepaper</a>
+        </section>
+    </main>
 
-  <div class="cta">
-    <a href="docs/iraquin-whitepaper.pdf" target="_blank" class="primary">
-      Read the Whitepaper
-    </a>
-  </div>
-</main>
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
 
+        let particles = [];
+        const particleCount = 450;
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = 220 + Math.random() * 120; 
+                this.x = canvas.width / 2 + Math.cos(angle) * radius;
+                this.y = canvas.height / 2 + Math.sin(angle) * radius;
+                this.size = Math.random() * 1.5;
+                this.opacity = Math.random() * 0.5;
+                this.speed = Math.random() * 0.2 + 0.05;
+            }
+
+            update() {
+                this.y -= this.speed;
+                this.opacity -= 0.002;
+                if (this.opacity <= 0) this.reset();
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(184, 192, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
+    </script>
 </body>
 </html>
