@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iraquin Protocol | High-Performance Blockchain</title>
+    <link rel="icon" type="image/svg" href="assets/icon.svg">
+    <title>
+      Iraquin Protocol | High-Performance Blockchain
+    </title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -159,18 +162,193 @@
             background: var(--accent-blue);
             box-shadow: 0 10px 25px rgba(184, 192, 255, 0.3);
         }
+        /* --- CARDS SECTION --- */
+        .cards-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(184, 192, 255, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(184, 192, 255, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        /* --- ROADMAP SECTION --- */
+        .roadmap-section {
+            padding: 140px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .roadmap-title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 300;
+            margin-bottom: 100px;
+            letter-spacing: -0.02em;
+        }
+
+        /* Vertical line */
+        .roadmap-section::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 200px;
+            transform: translateX(-50%);
+            width: 2px;
+            height: calc(100% - 220px);
+            background: linear-gradient(
+                to bottom,
+                rgba(184,192,255,0.4),
+                rgba(184,192,255,0.1)
+            );
+        }
+
+        .roadmap-item {
+            position: relative;
+            width: 50%;
+            padding: 40px;
+        }
+
+        .roadmap-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .roadmap-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .roadmap-content {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-content:hover {
+            border-color: rgba(184,192,255,0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(184,192,255,0.08);
+        }
+
+        .roadmap-content h4 {
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .roadmap-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Circle marker */
+        .roadmap-item::before {
+            content: "";
+            position: absolute;
+            top: 60px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(184,192,255,0.6);
+        }
+
+        .roadmap-item:nth-child(odd)::before {
+            right: -9px;
+        }
+
+        .roadmap-item:nth-child(even)::before {
+            left: -9px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            .roadmap-section::before {
+                left: 20px;
+            }
+
+            .roadmap-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 60px;
+            }
+
+            .roadmap-item::before {
+                left: 11px !important;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+
     </style>
 </head>
 <body>
 
     <header class="navbar">
         <div class="nav-container">
-            <div class="brand">iraquin</div>
+            <div class="brand">Iraquin</div>
             <nav class="nav-links">
-                <a href="/teaser/">Teaser</a>
+                <!-- <a href="/teaser/">Teaser</a> -->
+                <a href="#overview">Overview</a>
+                <a href="#roadmap">Roadmap</a>
                 <a href="https://github.com/iraquin/iraquin-protocol/blob/master/iraquin_whitepaper.pdf">Whitepaper</a>
-                <a href="https://drive.google.com/file/d/1NVOZWJLADt_82a6vaAY82huTPiRnhirV/view?usp=sharing">Pitch Deck</a>
+                <!-- <a href="https://drive.google.com/file/d/1NVOZWJLADt_82a6vaAY82huTPiRnhirV/view?usp=sharing">Pitch Deck</a> -->
                 <a href="#" class="nav-cta">Docs</a>
+
             </nav>
         </div>
     </header>
@@ -187,11 +365,118 @@
         <section class="content-area">
             <h1>Iraquin Protocol</h1>
             <p class="tagline">
-                An architecture for <span>deterministic outcomes</span><br>
-                in high-performance blockchains.
+               A verification-first settlement layer for AI and off-chain compute
             </p>
-            <a href="https://github.com/iraquin/iraquin-protocol/blob/master/iraquin_whitepaper.pdf" class="btn-primary">Read the Whitepaper</a>
+            <!-- <a href="https://github.com/iraquin/iraquin-protocol/blob/master/iraquin_whitepaper.pdf" class="btn-primary">Read the Whitepaper</a> -->
         </section>
+        <section class="cards-section" id="overview">
+          <div class="cards-grid">
+
+              <div class="card">
+                  <h3>Verification, Not Replication</h3>
+                  <p>
+                      Traditional blockchains replicate execution across validators.
+                      Iraquin verifies outcomes instead, eliminating redundant computation
+                      while preserving deterministic state evolution.
+                  </p>
+              </div>
+
+              <div class="card">
+                  <h3>On-Chain AI Settlement</h3>
+                  <p>
+                      AI inference runs off-chain and settles on-chain through verifiable proofs.
+                      AI decisions that move capital can be audited and enforced without global re-execution.
+                  </p>
+              </div>
+
+              <div class="card">
+                  <h3>Pluggable Verification Layer</h3>
+                  <p>
+                      TEE attestations, Optimistic fraud proofs and zk verification
+                      supported as the network evolves. Iraquin verifies proofs — not execution.
+                  </p>
+              </div>
+
+              <div class="card">
+                  <h3>No Rollback. Deterministic Finality.</h3>
+                  <p>
+                      Once ordered, state is never reverted. Invalid execution is resolved
+                      through forward correction, preserving a linear and auditable history.
+                  </p>
+              </div>
+
+              <div class="card">
+                  <h3>Unbounded Off-Chain Compute</h3>
+                  <p>
+                      Heavy computation executes off-chain and settles through deterministic
+                      state diffs. Execution is not constrained by on-chain VM gas limits.
+                  </p>
+              </div>
+
+              <div class="card">
+                  <h3>Explore the Protocol</h3>
+                  <p>
+                      Dive deeper into the architecture, roadmap, and technical design.
+                  </p>
+                  <a href="https://github.com/iraquin/iraquin-protocol/blob/master/iraquin_whitepaper.pdf">Read Whitepaper →</a><br>
+                  <a href="https://drive.google.com/file/d/1NVOZWJLADt_82a6vaAY82huTPiRnhirV/view?usp=sharing">View Pitch Deck →</a>
+              </div>
+
+          </div>
+      </section>
+      <section class="roadmap-section" id="roadmap">
+        <h2 class="roadmap-title">Protocol Roadmap</h2>
+
+        <div class="roadmap-item">
+            <div class="roadmap-content">
+                <h4>PHASE 1</h4>
+                <h3>Deterministic Settlement Core</h3>
+                <p>
+                    Prime & Omega implementation. Intent-level ordering,
+                    forward correction engine, and canonical state diff validation.
+                    Establishing rollback-free deterministic finality.
+                </p>
+            </div>
+        </div>
+
+        <div class="roadmap-item">
+            <div class="roadmap-content">
+                <h4>PHASE 2</h4>
+                <h3>Data Availability & Verifiable Compute</h3>
+                <p>
+                    Consensus-backed data availability layer and TEE-based execution.
+                    Off-chain compute settles through verifiable state diffs without
+                    global re-execution.
+                </p>
+            </div>
+        </div>
+
+        <div class="roadmap-item">
+            <div class="roadmap-content">
+                <h4>PHASE 3</h4>
+                <h3>Decentralized Compute Marketplace</h3>
+                <p>
+                    Collateralized compute workers, AI inference verification (OPML),
+                    and open job marketplace for economically consequential workloads.
+                </p>
+            </div>
+        </div>
+
+        <div class="roadmap-item">
+            <div class="roadmap-content">
+                <h4>PHASE 4</h4>
+                <h3>Modular Verification & Governance</h3>
+                <p>
+                    zk-proof integration, advanced proof-class plugins,
+                    adaptive resource allocation, and long-term decentralization
+                    of protocol governance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
     </main>
 
     <script>
