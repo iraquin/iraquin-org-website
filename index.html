@@ -146,6 +146,17 @@
 
         .tagline span { color: var(--accent-blue); }
 
+        .subline {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto 60px auto;
+            opacity: 0.6;
+        }
+
+
         .btn-primary {
             display: inline-block;
             padding: 16px 36px;
@@ -164,9 +175,17 @@
         }
         /* --- CARDS SECTION --- */
         .cards-section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .card-title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 300;
+            margin-bottom: 100px;
+            letter-spacing: -0.02em;
         }
 
         .cards-grid {
@@ -332,6 +351,137 @@
         html {
             scroll-behavior: smooth;
         }
+        /* --- COMPARISON SECTION --- */
+        .comparison-section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        .comparison-table {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .comparison-row.header {
+            background: rgba(255,255,255,0.03);
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .comparison-row div {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .comparison-row.header div {
+            color: var(--accent-blue);
+        }
+        /* --- PROBLEM SECTION --- */
+        .problem-section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .problem-title {
+            font-size: 2.4rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        .problem-intro {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 70px auto;
+            line-height: 1.6;
+        }
+
+        .problem-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .problem-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            border-color: rgba(184,192,255,0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(184,192,255,0.08);
+        }
+
+        .problem-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .problem-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .problem-conclusion {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: 300;
+            color: var(--text-muted);
+        }
+
+        .problem-conclusion span {
+            color: var(--accent-blue);
+        }
+        .about-section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .about-section p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+
 
 
     </style>
@@ -365,11 +515,115 @@
         <section class="content-area">
             <h1>Iraquin Protocol</h1>
             <p class="tagline">
-               A verification-first settlement layer for AI and off-chain compute
+               A verification-first settlement layer for compute-intensive systems
+            </p>
+            <p class="subline">
+              Enabling AI, financial engines, and off-chain computation to settle without global re-execution
             </p>
             <!-- <a href="https://github.com/iraquin/iraquin-protocol/blob/master/iraquin_whitepaper.pdf" class="btn-primary">Read the Whitepaper</a> -->
         </section>
-        <section class="cards-section" id="overview">
+        <section class="problem-section" id="overview">
+              <h2 class="problem-title">The Compute Problem</h2>
+  
+              <p class="problem-intro">
+                  blockchains bind consensus to a canonical execution environment.
+                  That works for simple transactions. It breaks for compute-heavy systems.
+              </p>
+  
+              <div class="problem-points">
+                  <div class="problem-item">
+                      <h4>Gas Explosion</h4>
+                      <p>
+                          Complex AI models and heavy logic cause gas costs to scale rapidly
+                          when executed directly on-chain
+                      </p>
+                  </div>
+  
+                  <div class="problem-item">
+                      <h4>~15 TPS</h4>
+                      <p>
+                          Ethereum processes roughly 15 transactions per second —
+                          modern AI systems require thousands
+                      </p>
+                  </div>
+  
+                  <div class="problem-item">
+                      <h4>Trust Gap</h4>
+                      <p>
+                          Decentralized compute networks exist — but without native,
+                          trustless on-chain settlement of results
+                      </p>
+                  </div>
+              </div>
+  
+              <p class="problem-conclusion">
+                  Execution does not belong inside consensus.
+                  <span>Verification does.</span>
+              </p>
+          </section>
+          <section class="about-section">
+              <h2>What is Iraquin?</h2>
+              <p>
+                  Iraquin is a blockchain built around verification-first settlement.
+                  Instead of binding consensus to execution, Iraquin validates externally
+                  computed state transitions through modular proof systems.
+              </p>
+              <p>
+                  While operating as an independent chain, Iraquin is designed to serve
+                  as settlement infrastructure for compute networks, AI systems, and
+                  other blockchain ecosystems requiring verifiable state transitions.
+              </p>
+          </section>
+
+          <section class="comparison-section">
+            <h2 class="comparison-title">Architectural Contrast</h2>
+
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div>Design Dimension</div>
+                    <div>Traditional Chains</div>
+                    <div>Iraquin</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Core Model</div>
+                    <div>State Machine Replication</div>
+                    <div>Proof Validated Settlement</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>State Transition Function</div>
+                    <div>VM defined and canonical</div>
+                    <div>Defined by proof class</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Execution Role</div>
+                    <div>Defines Validity</div>
+                    <div>Generates candidate state-diff</div>
+                  </div>
+                  
+                  <div class="comparison-row">
+                    <div>Rollback Handling</div>
+                    <div>Reorganization possible</div>
+                    <div>Forward correction only</div>
+                  </div>
+                  
+                  <div class="comparison-row">
+                    <div>Consensus Responsibility</div>
+                    <div>Agree on execution result</div>
+                    <div>Agree on intents + validate proofs</div>
+                  </div>
+                  <div class="comparison-row">
+                    <div>Compute Environment</div>
+                    <div>Constrained to VM</div>
+                    <div>Native external environments</div>
+                </div>
+            </div>
+          </section>
+
+        <section class="cards-section">
+          <h2 class="card-title">Core Properties</h2>
           <div class="cards-grid">
 
               <div class="card">
@@ -422,9 +676,10 @@
                   <a href="https://drive.google.com/file/d/1NVOZWJLADt_82a6vaAY82huTPiRnhirV/view?usp=sharing">View Pitch Deck →</a>
               </div>
 
-          </div>
-      </section>
-      <section class="roadmap-section" id="roadmap">
+            </div>
+        </section>
+
+        <section class="roadmap-section" id="roadmap">
         <h2 class="roadmap-title">Protocol Roadmap</h2>
 
         <div class="roadmap-item">
@@ -473,11 +728,10 @@
                 </p>
             </div>
         </div>
-    </section>
+        </section>
 
 
-
-    </main>
+      </main>
 
     <script>
         const canvas = document.getElementById('particleCanvas');
