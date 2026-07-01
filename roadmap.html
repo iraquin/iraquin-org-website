@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="assets/icon4.svg">
+    <title>Roadmap | Iraquin Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: black;
+            --accent-blue: #b8c0ff;
+            --text-main: #e8e8e8;
+            --text-muted: #888;
+            --text-dim: #555;
+            --border: rgba(255,255,255,0.06);
+            --surface: rgba(255,255,255,0.02);
+            --nav-glass: rgba(20, 20, 20, 0.85);
+            --green-accent: #6cdb7a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 24px;
+            right: 5%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 24px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        .nav-cta {
+            border: 1px solid var(--accent-blue);
+            padding: 6px 18px;
+            border-radius: 20px;
+            color: var(--accent-blue) !important;
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            text-align: center;
+            padding: 140px 20px 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- ROADMAP TIMELINE --- */
+        .roadmap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 40px 100px;
+            position: relative;
+        }
+
+        /* Vertical line — dim portion (full height) */
+        .roadmap::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(184,192,255,0.3) 0%,
+                rgba(184,192,255,0.3) 22%,
+                rgba(184,192,255,0.05) 25%,
+                rgba(184,192,255,0.05) 100%
+            );
+        }
+
+        /* Glowing line overlay — extends halfway through Phase 0 */
+        .roadmap::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 22%;
+            background: linear-gradient(
+                to bottom,
+                rgba(108,219,122,0.6) 0%,
+                rgba(108,219,122,0.3) 60%,
+                transparent 100%
+            );
+            filter: blur(3px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Sparkle dots along the glowing line */
+        .sparkle {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--green-accent);
+            z-index: 3;
+            pointer-events: none;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 8%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 14%; animation-delay: 0.7s; width: 3px; height: 3px; }
+        .sparkle:nth-child(3) { top: 20%; animation-delay: 1.4s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+        }
+
+        /* Phase icon — positioned right of the dot */
+        .phase-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 90px;
+            width: auto;
+            z-index: 4;
+        }
+
+        .phase:nth-child(odd) .phase-icon {
+            right: 20px;
+        }
+
+        .phase:nth-child(even) .phase-icon {
+            left: -90px;
+        }
+
+        .phase {
+            position: relative;
+            width: 50%;
+            padding: 0 50px;
+        }
+
+        .phase-card {
+            margin-bottom: 60px;
+        }
+
+        .phase:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .phase:nth-child(even) {
+            left: 50%;
+        }
+
+        /* Circle marker */
+        .phase::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 12px rgba(184,192,255,0.4);
+            z-index: 2;
+        }
+
+        .phase:nth-child(odd)::before {
+            right: -8px;
+        }
+
+        .phase:nth-child(even)::before {
+            left: -8px;
+        }
+
+        .phase.active::before {
+            background: var(--green-accent);
+            box-shadow: 0 0 16px rgba(108,219,122,0.5);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 12px rgba(108,219,122,0.5); }
+            50% { box-shadow: 0 0 28px rgba(108,219,122,0.9), 0 0 50px rgba(108,219,122,0.3); }
+        }
+
+        .phase-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+        }
+
+        .phase-card:hover {
+            border-color: rgba(184,192,255,0.25);
+            transform: translateY(-4px);
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .phase:nth-child(odd) .phase-header {
+            justify-content: flex-end;
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .phase-status {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.04em;
+        }
+
+        .phase-status.live {
+            background: rgba(108,219,122,0.12);
+            color: var(--green-accent);
+            border: 1px solid rgba(108,219,122,0.25);
+        }
+
+        .phase-status.planned {
+            background: rgba(255,255,255,0.04);
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .phase-sub {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .phase-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .phase-milestones {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .phase-milestones li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .phase-milestones li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-dim);
+        }
+
+        .phase:nth-child(odd) .phase-card {
+            text-align: right;
+        }
+
+        .phase:nth-child(odd) .phase-milestones li {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+
+        .phase:nth-child(odd) .phase-milestones li::before {
+            left: auto;
+            right: 0;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 60px 40px 40px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-brand .brand {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .footer-brand .brand img {
+            height: 2.4rem;
+            width: auto;
+        }
+
+        .footer-brand p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            max-width: 260px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover { color: var(--accent-blue); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .page-header { padding: 120px 20px 40px; }
+            .page-header h1 { font-size: 2.2rem; }
+
+            .roadmap::before,
+            .roadmap::after { left: 20px; }
+
+            .sparkle { left: 20px; }
+
+            .phase {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding: 0 0 0 56px;
+            }
+
+            .phase-card {
+                margin-bottom: 40px;
+            }
+
+            .phase::before {
+                left: 12px !important;
+            }
+
+            .phase-card,
+            .phase:nth-child(odd) .phase-card {
+                text-align: left !important;
+            }
+
+            .phase-header,
+            .phase:nth-child(odd) .phase-header {
+                justify-content: flex-start;
+            }
+
+            .phase-milestones li,
+            .phase:nth-child(odd) .phase-milestones li {
+                padding-left: 20px !important;
+                padding-right: 0 !important;
+            }
+
+            .phase-milestones li::before,
+            .phase:nth-child(odd) .phase-milestones li::before {
+                left: 0 !important;
+                right: auto !important;
+            }
+
+            .phase-icon { display: none; }
+
+            .footer-inner { flex-direction: column; }
+            .footer-links { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="whitepaper.html">Whitepaper</a>
+                <a href="#" class="nav-cta">Roadmap</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <h1>Roadmap</h1>
+    </section>
+
+    <!-- ===== ROADMAP TIMELINE ===== -->
+    <div class="roadmap">
+
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+
+        <!-- Phase 0 -->
+        <div class="phase active">
+            <img src="assets/icon_white.jpeg" alt="" class="phase-icon">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <h2 class="phase-title">Phase 0</h2>
+                    <span class="phase-status live">In progress</span>
+                </div>
+                <p class="phase-sub">Protocol Research &amp; Developer Preview</p>
+                <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+                    Build the core protocol architecture and developer foundation.
+                </p>
+                <div class="phase-label">Milestones</div>
+                <ul class="phase-milestones">
+                    <li>Prime &amp; Omega protocol implementation</li>
+                    <li>Native execution framework</li>
+                    <li>Documentation &amp; whitepaper</li>
+                    <li>Developer SDK</li>
+                    <li>Interactive explorer</li>
+                    <li>Developer preview network</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Phase 1 -->
+        <div class="phase">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <h2 class="phase-title">Phase 1</h2>
+                    <span class="phase-status planned">Planned</span>
+                </div>
+                <p class="phase-sub">Public Testnet</p>
+                <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+                    Open Iraquin to developers and early validators.
+                </p>
+                <div class="phase-label">Milestones</div>
+                <ul class="phase-milestones">
+                    <li>Public testnet</li>
+                    <li>Explorer</li>
+                    <li>Node software</li>
+                    <li>Validator onboarding</li>
+                    <li>Native application deployment</li>
+                    <li>Verification receipts</li>
+                    <li>Performance benchmarking</li>
+                    <li>Bug bounty</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="phase">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <h2 class="phase-title">Phase 2</h2>
+                    <span class="phase-status planned">Planned</span>
+                </div>
+                <p class="phase-sub">Mainnet Launch</p>
+                <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+                    Launch the production verification network.
+                </p>
+                <div class="phase-label">Milestones</div>
+                <ul class="phase-milestones">
+                    <li>Mainnet</li>
+                    <li>Native token</li>
+                    <li>Staking</li>
+                    <li>Validator incentives</li>
+                    <li>Settlement engine</li>
+                    <li>Security audits</li>
+                    <li>Governance v1</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <h2 class="phase-title">Phase 3</h2>
+                    <span class="phase-status planned">Planned</span>
+                </div>
+                <p class="phase-sub">Native Compute Ecosystem</p>
+                <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+                    Expand the ecosystem around verifiable native computation.
+                </p>
+                <div class="phase-label">Milestones</div>
+                <ul class="phase-milestones">
+                    <li>AI verification</li>
+                    <li>TEE execution</li>
+                    <li>Compute marketplace</li>
+                    <li>SDK improvements</li>
+                    <li>Grants program</li>
+                    <li>Wallet ecosystem</li>
+                    <li>Explorer enhancements</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="brand"><img src="assets/icon_white.jpeg" alt="">Iraquin</span>
+                <p>Verification-first settlement layer for compute-intensive systems.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Protocol</h4>
+                    <a href="index.html">Overview</a>
+                    <a href="#">Architecture</a>
+                    <a href="roadmap.html">Roadmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                     <a href="#">Documentation</a>
+                    <a href="whitepaper.html">Whitepaper</a>
+                    <a href="#">GitHub</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="#">Community</a>
+                    <a href="#">Discord</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Iraquin Protocol. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
