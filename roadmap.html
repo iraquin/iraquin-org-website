@@ -339,6 +339,7 @@
         .footer {
             border-top: 1px solid rgba(255,255,255,0.06);
             padding: 60px 40px 40px;
+            margin-top: 80px;
         }
 
         .footer-inner {
@@ -359,13 +360,14 @@
             gap: 8px;
         }
 
+        .footer-brand .brand svg,
         .footer-brand .brand img {
-            height: 2.4rem;
+            height: 3.7rem;
             width: auto;
         }
 
         .footer-brand p {
-            color: var(--text-dim);
+            color: var(--text-muted);
             font-size: 0.9rem;
             max-width: 260px;
             line-height: 1.6;
@@ -379,7 +381,7 @@
 
         .footer-col h4 {
             font-size: 0.8rem;
-            color: var(--text-dim);
+            color: var(--text-muted);
             letter-spacing: 0.08em;
             font-weight: 600;
             margin-bottom: 16px;
@@ -394,6 +396,12 @@
             transition: color 0.3s;
         }
 
+        .footer-col a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: default;
+        }
+
         .footer-col a:hover { color: var(--accent-blue); }
 
         .footer-bottom {
@@ -403,7 +411,7 @@
             border-top: 1px solid rgba(255,255,255,0.04);
             text-align: center;
             font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--text-muted);
         }
 
         /* --- RESPONSIVE --- */
@@ -467,6 +475,7 @@
         <div class="nav-container">
             <nav class="nav-links">
                 <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
                 <a href="whitepaper.html">Whitepaper</a>
                 <a href="#" class="nav-cta">Roadmap</a>
             </nav>
@@ -589,26 +598,26 @@
         <div class="footer-inner">
             <div class="footer-brand">
                 <span class="brand"><img src="assets/icon_white.jpeg" alt="">Iraquin</span>
-                <p>Verification-first settlement layer for compute-intensive systems.</p>
+                <p>Verification-first settlement layer.</p>
             </div>
             <div class="footer-links">
                 <div class="footer-col">
                     <h4>Protocol</h4>
-                    <a href="index.html">Overview</a>
-                    <a href="#">Architecture</a>
+                    <a class="disabled">Overview</a>
+                    <a href="whitepaper.html">Architecture</a>
                     <a href="roadmap.html">Roadmap</a>
                 </div>
                 <div class="footer-col">
                     <h4>Resources</h4>
-                     <a href="#">Documentation</a>
+                    <a class="disabled">Documentation</a>
                     <a href="whitepaper.html">Whitepaper</a>
-                    <a href="#">GitHub</a>
+                    <a class="disabled">GitHub</a>
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
-                    <a href="#">Community</a>
-                    <a href="#">Discord</a>
-                    <a href="#">Twitter</a>
+                    <a class="disabled">Discord</a>
+                    <a href="https://x.com/buildiraquin">X</a>
+                    <a href="https://t.me/iraquinprotocol">Telegram</a>
                 </div>
             </div>
         </div>

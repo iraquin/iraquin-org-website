@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="assets/icon4.svg">
+    <title>Features | Iraquin Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: black;
+            --accent-blue: #b8c0ff;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --text-dim: #666;
+            --border: rgba(255,255,255,0.06);
+            --nav-glass: rgba(20, 20, 20, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 24px;
+            right: 5%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 24px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        .nav-cta {
+            border: 1px solid var(--accent-blue);
+            padding: 6px 18px;
+            border-radius: 20px;
+            color: var(--accent-blue) !important;
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            text-align: center;
+            padding: 140px 20px 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .page-header h1 img {
+            height: 15rem;
+            width: auto;
+        }
+
+        /* --- FEATURE SECTIONS --- */
+        .feature {
+            display: flex;
+            min-height: 80vh;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            gap: 70px;
+        }
+
+        .feature.reverse { flex-direction: row-reverse; }
+
+        .feature-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-image img {
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            border-radius: 16px;
+            object-fit: contain;
+        }
+
+        .feature-text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .feature-text .feature-number {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .feature-text h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .feature-text .feature-tagline {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .feature-text p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 520px;
+        }
+
+        /* --- POST-QUANTUM (no image, centered) --- */
+        .feature-pq {
+            text-align: center;
+            padding: 100px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+        }
+
+        .feature-pq h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .feature-pq .feature-tagline {
+            font-size: 1rem;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-pq p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 60px 40px 40px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-brand .brand {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .footer-brand .brand svg,
+        .footer-brand .brand img {
+            height: 3.7rem;
+            width: auto;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 260px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .footer-col a:hover { color: var(--accent-blue); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .page-header { padding: 120px 20px 40px; }
+            .page-header h1 { font-size: 2.2rem; gap: 12px; }
+            .page-header h1 img { height: 5rem; }
+
+            .feature {
+                flex-direction: column !important;
+                min-height: auto;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+
+            .feature-image img { max-width: 100%; }
+            .feature-text { text-align: center; }
+            .feature-text p { max-width: 100%; }
+            .feature-text h2 { font-size: 1.8rem; }
+            .feature-pq { padding: 60px 20px; }
+            .feature-pq h2 { font-size: 1.8rem; }
+
+            .footer-inner { flex-direction: column; }
+            .footer-links { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" class="nav-cta">Features</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="whitepaper.html">Whitepaper</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <h1><img src="assets/hero_black.png" alt="">Features</h1>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+
+    <!-- 1. Native Applications -->
+    <div class="feature">
+        <div class="feature-image">
+            <img src="assets/gpu_server_connected.png" alt="Native Applications">
+        </div>
+        <div class="feature-text">
+            <div class="feature-number">01</div>
+            <h2>Native Applications</h2>
+            <div class="feature-tagline">Run Native Applications</div>
+            <p>
+                Run your applications wherever they perform best&mdash;cloud servers, GPUs, edge devices,
+                or your existing infrastructure. Iraquin independently verifies the outcome before it
+                becomes part of shared state.<br><br>
+                Keep your software. Verify the outcome.
+            </p>
+        </div>
+    </div>
+
+    <!-- 2. Independent Verification -->
+    <div class="feature reverse">
+        <div class="feature-image">
+            <img src="assets/election.png" alt="Independent Verification">
+        </div>
+        <div class="feature-text">
+            <div class="feature-number">02</div>
+            <h2>Independent Verification</h2>
+            <div class="feature-tagline">Stop Repeating The Same Work</div>
+            <p>
+                Applications execute once, while the network independently verifies the result before
+                settlement. This reduces unnecessary duplication and allows computation to scale beyond
+                blockchain virtual machines.
+            </p>
+        </div>
+    </div>
+
+    <!-- 3. Gas-Free Native Computation -->
+    <div class="feature">
+        <div class="feature-image">
+            <img src="assets/gas_toll.png" alt="Gas-Free Computation">
+        </div>
+        <div class="feature-text">
+            <div class="feature-number">03</div>
+            <h2>Gas-Free Native Computation</h2>
+            <div class="feature-tagline">Your Application Shouldn't Pay A Toll To Compute</div>
+            <p>
+                Every interaction with a blockchain comes at a cost. As applications become larger and more
+                compute-intensive, execution fees quickly become a barrier.<br><br>
+                Because applications execute outside the blockchain, Iraquin doesn't charge gas for native
+                computation. The network settles verified outcomes&mdash;not every CPU cycle your application
+                performs.<br><br>
+                Pay for trust. Not computation.
+            </p>
+        </div>
+    </div>
+
+    <!-- 4. Forward-Only Finality -->
+    <div class="feature reverse">
+        <div class="feature-image">
+            <img src="assets/road_patch.png" alt="Forward-Only Finality">
+        </div>
+        <div class="feature-text">
+            <div class="feature-number">04</div>
+            <h2>Forward-Only Finality</h2>
+            <div class="feature-tagline">Correct Forward. Don't Rewrite History.</div>
+            <p>
+                Traditional blockchains recover from incorrect state through chain reorganizations.
+                Iraquin is designed to move forward.<br><br>
+                Invalid outcomes are corrected through verification rather than rewriting previously
+                accepted history. Applications gain a more predictable settlement model.
+            </p>
+        </div>
+    </div>
+
+    <!-- 5. Built for Autonomous Systems -->
+    <div class="feature">
+        <div class="feature-image">
+            <img src="assets/autonomous.png" alt="Autonomous Systems">
+        </div>
+        <div class="feature-text">
+            <div class="feature-number">05</div>
+            <h2>Built for Autonomous Systems</h2>
+            <div class="feature-tagline">Intelligence Needs Accountability</div>
+            <p>
+                AI is beginning to approve loans, execute trades, manage infrastructure, and influence
+                critical decisions. As autonomous systems become more capable, the question shifts from
+                what AI can do to whether its outcomes can be trusted.<br><br>
+                Iraquin provides a verification layer designed for that future.
+            </p>
+        </div>
+    </div>
+
+    <!-- 6. Flexible Verification -->
+    <div class="feature reverse">
+        <div class="feature-image">
+            <img src="assets/flexible.png" alt="Flexible Verification">
+        </div>
+        <div class="feature-text">
+            <div class="feature-number">06</div>
+            <h2>Flexible Verification</h2>
+            <div class="feature-tagline">One Network. Multiple Ways To Verify.</div>
+            <p>
+                Different workloads require different verification strategies. Iraquin is designed to
+                support cryptographic proofs, trusted execution environments, batch verification, and
+                future verification models through a common settlement layer.<br><br>
+                This allows the network to evolve alongside advances in hardware and cryptography.
+            </p>
+        </div>
+    </div>
+
+    <!-- 7. Post-Quantum Ready -->
+    <div class="feature-pq">
+        <div class="feature-number" style="margin-bottom:8px;">07</div>
+        <h2>Post-Quantum Ready</h2>
+        <div class="feature-tagline">Security Designed For The Next Decade</div>
+        <p>
+            Cryptography continues to evolve. Iraquin is designed with modern cryptographic primitives
+            and a roadmap toward post-quantum security, helping ensure the network can adapt to future
+            threats without redesigning its foundation.
+        </p>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="brand"><img src="assets/icon_white.jpeg" alt="">Iraquin</span>
+                <p>Verification-first settlement layer.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Protocol</h4>
+                    <a class="disabled">Overview</a>
+                    <a href="whitepaper.html">Architecture</a>
+                    <a href="roadmap.html">Roadmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a class="disabled">Documentation</a>
+                    <a href="whitepaper.html">Whitepaper</a>
+                    <a class="disabled">GitHub</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a class="disabled">Discord</a>
+                    <a href="https://x.com/buildiraquin">X</a>
+                    <a href="https://t.me/iraquinprotocol">Telegram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Iraquin Protocol. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

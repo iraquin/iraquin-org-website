@@ -255,7 +255,105 @@
             transition: color 0.3s;
         }
 
+        .footer-col a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: default;
+        }
+
         .footer-col a:hover { color: var(--accent-blue); }
+
+        /* --- COMMUNITY MODAL --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 48px 40px 40px;
+            max-width: 380px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+
+        .modal h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover { color: #fff; }
+
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .modal-link.x {
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-link.x:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .modal-link.telegram {
+            background: rgba(0,136,204,0.15);
+            color: #5bb7e8;
+            border: 1px solid rgba(0,136,204,0.25);
+        }
+
+        .modal-link.telegram:hover {
+            background: rgba(0,136,204,0.25);
+        }
+
+        .modal-link.disabled {
+            opacity: 0.25;
+            pointer-events: none;
+            background: rgba(255,255,255,0.03);
+            color: var(--text-dim);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
 
         .footer-bottom {
             max-width: 1200px;
@@ -304,8 +402,7 @@
     <header class="navbar">
         <div class="nav-container">
 <nav class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#ecosystem">Ecosystem</a>
+                <a href="features.html">Features</a>
                 <a href="whitepaper.html">Whitepaper</a>
                 <a href="roadmap.html" class="nav-cta">Roadmap</a>
             </nav>
@@ -343,7 +440,7 @@
                     <span style="color: var(--accent-blue)">The game remains the same.
                     The rules evolve.</span>
                 </p>
-                <a href="#" class="alt-cta">Explore Architecture &rarr;</a>
+                <a href="whitepaper.html" class="alt-cta">Explore Architecture &rarr;</a>
             </div>
         </div>
 
@@ -360,7 +457,7 @@
                 Iraquin takes a different approach. Applications execute once, while the network independently verifies the outcome before it becomes shared truth.
                 <span style="color: var(--accent-blue)">The goal isn't to repeat computation. It's to establish confidence.</span>
                 </p>
-                <a href="#" class="alt-cta">Join Community &rarr;</a>
+                <a href="#" class="alt-cta" id="joinBtn">Join Community &rarr;</a>
             </div>
         </div>
 
@@ -378,7 +475,7 @@
                     <span style="color: var(--accent-blue)">Can the outcome be independently verified?</span>
                     Iraquin is building infrastructure for that future.
                 </p>
-                <a href="#" class="alt-cta">Explore Features &rarr;</a>
+                <a href="features.html" class="alt-cta">Explore Features &rarr;</a>
             </div>
         </div>
 
@@ -412,20 +509,19 @@
             <div class="footer-links">
                 <div class="footer-col">
                     <h4>Protocol</h4>
-                    <a href="#">Overview</a>
-                    <a href="#">Architecture</a>
-                    <a href="#">Roadmap</a>
+                    <a class="disabled">Overview</a>
+                    <a href="whitepaper.html">Architecture</a>
+                    <a href="roadmap.html">Roadmap</a>
                 </div>
                 <div class="footer-col">
                     <h4>Resources</h4>
-                    <a href="#">Documentation</a>
+                    <a class="disabled">Documentation</a>
                     <a href="whitepaper.html">Whitepaper</a>
-                    <a href="#">GitHub</a>
+                    <a class="disabled">GitHub</a>
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
-                    <!-- <a href="#">Community</a> -->
-                   <a href="#">Discord</a>
+                    <a class="disabled">Discord</a>
                     <a href="https://x.com/buildiraquin">X</a>
                     <a href="https://t.me/iraquinprotocol">Telegram</a>
                 </div>
@@ -436,5 +532,40 @@
         </div>
     </footer>
 
+    <!-- ===== COMMUNITY MODAL ===== -->
+    <div class="modal-overlay" id="communityModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h3>Join the Community</h3>
+            <div class="modal-links">
+                <a href="https://x.com/buildiraquin" target="_blank" class="modal-link x">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    X (Twitter)
+                </a>
+                <a href="https://t.me/iraquinprotocol" target="_blank" class="modal-link telegram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.127.037.336.024.528-.072 2.473-.42 5.25-.594 6.958-.073.732-.207 1.058-.36 1.146-.33.2-.76.156-1.156.079-.743-.122-1.374-.412-1.963-.718-.608-.34-1.108-.674-1.667-.94-.838-.398-1.495-.346-2.159.164-.077.063-.163.13-.246.197-.29.237-.57.452-.812.694-.507.507-.847.845-1.088 1.22-.216.332-.432.475-.695.434-.15-.023-.31-.1-.448-.293-.178-.248-.178-.592-.152-.954.02-.272.074-.658.128-1.028.063-.43.476-.86.843-1.176l.04-.035c.22-.191.669-.566 1.051-.884.434-.36.364-.569-.111-.948l-.02-.014c-.544-.426-1.766-1.38-2.135-1.795l-.054-.06c-.616-.695-.104-1.383.244-1.647l.033-.026c.254-.203 1.025-.635 2.446-.98.849-.206 1.593-.367 2.21-.498.993-.21 1.77-.35 2.091-.402.247-.04.484-.022.588.09.055.06.073.136.07.22z"/></svg>
+                    Telegram
+                </a>
+                <a class="modal-link disabled">Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('communityModal');
+        const joinBtn = document.getElementById('joinBtn');
+        const closeBtn = document.getElementById('modalClose');
+
+        joinBtn.addEventListener('click', e => {
+            e.preventDefault();
+            modal.classList.add('open');
+        });
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+
+        modal.addEventListener('click', e => {
+            if (e.target === modal) modal.classList.remove('open');
+        });
+    </script>
 </body>
 </html>
